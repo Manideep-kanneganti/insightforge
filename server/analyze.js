@@ -17,6 +17,39 @@ const port = Number(process.env.PORT || 8787);
 const DEFAULT_TIMEOUT_MS = 22000;
 const DEFAULT_MAX_INPUT_CHARS = 8000;
 
+app.get('/', (_req, res) => {
+  const html = [
+    '<!doctype html>',
+    '<html lang="en">',
+    '<head>',
+    '<meta charset="utf-8" />',
+    '<meta name="viewport" content="width=device-width, initial-scale=1" />',
+    '<title>InsightForge API</title>',
+    '<style>',
+    'body { margin: 0; min-height: 100vh; display: grid; place-items: center; font-family: Inter, system-ui, sans-serif; color: #e5e7eb; background: #080b1a; }',
+    'main { max-width: 560px; padding: 32px; border: 1px solid rgba(255,255,255,.16); border-radius: 18px; background: rgba(255,255,255,.08); box-shadow: 0 24px 70px rgba(0,0,0,.32); }',
+    'h1 { margin: 0 0 10px; font-size: 28px; }',
+    'p { margin: 0 0 14px; line-height: 1.6; color: #a7b0c5; }',
+    'a { color: #7dd3fc; font-weight: 700; }',
+    'code { color: #c4b5fd; }',
+    '</style>',
+    '</head>',
+    '<body>',
+    '<main>',
+    '<h1>InsightForge API is online</h1>',
+    '<p>This is the backend service. Open the frontend dashboard at <a href="http://127.0.0.1:5173/">http://127.0.0.1:5173/</a>.</p>',
+    '<p>Analysis endpoint: <code>POST /api/analyze</code></p>',
+    '</main>',
+    '</body>',
+    '</html>',
+  ].join('');
+
+  res.type('html').send(html);
+});
+app.get('/api/health', (_req, res) => {
+  res.json({ ok: true, service: 'InsightForge analysis API' });
+});
+
 app.post('/api/analyze', upload.single('file'), async (req, res) => {
   try {
     const config = readFoundryConfig();
