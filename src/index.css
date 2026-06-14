@@ -1,0 +1,174 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #020617;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    linear-gradient(135deg, rgba(8, 13, 30, 0.98), rgba(2, 6, 23, 1) 42%, rgba(5, 9, 24, 1)),
+    #020617;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #020617;
+}
+
+.app-background-image,
+.app-background-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.app-background-image {
+  z-index: 0;
+  background-image: url("/purple-abstract-background.jpg");
+  background-position: center bottom;
+  background-size: cover;
+  opacity: 1;
+  filter: brightness(0.82) saturate(1.12) contrast(1.04);
+}
+
+.app-background-overlay {
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(2, 6, 23, 0.45), rgba(2, 6, 23, 0.68) 37%, rgba(2, 6, 23, 0.68) 63%, rgba(2, 6, 23, 0.45)),
+    linear-gradient(180deg, rgba(2, 6, 23, 0.38), rgba(2, 6, 23, 0.7));
+}
+
+.app-content {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+}
+
+button,
+textarea,
+input {
+  font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+textarea:focus-visible,
+input:focus-visible {
+  outline: 2px solid #67e8f9;
+  outline-offset: 2px;
+}
+
+::selection {
+  background: rgba(103, 232, 249, 0.25);
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border: 3px solid #020617;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+.accent-bg {
+  background: var(--accent, #67e8f9);
+}
+
+.accent-text {
+  color: var(--accent, #67e8f9);
+}
+
+.accent-button {
+  background: var(--accent, #67e8f9);
+  color: #020617;
+}
+
+.accent-button:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.accent-nav-active {
+  background: var(--accent-soft, rgba(103, 232, 249, 0.12));
+  color: var(--accent, #67e8f9);
+  box-shadow: inset 0 0 0 1px var(--accent-border, rgba(103, 232, 249, 0.32));
+}
+
+.glass-panel {
+  position: relative;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.045) 38%, rgba(15, 23, 42, 0.26)),
+    rgba(15, 23, 42, 0.2);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 22px 70px rgba(2, 6, 23, 0.3),
+    0 5px 18px rgba(255, 255, 255, 0.06),
+    inset 0 1px 2px rgba(255, 255, 255, 0.42),
+    inset 0 -28px 44px rgba(15, 23, 42, 0.24);
+  backdrop-filter: blur(28px) saturate(1.22);
+}
+
+.glass-panel::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28), transparent 34%),
+    radial-gradient(120% 80% at 20% 0%, rgba(255, 255, 255, 0.24), transparent 42%);
+  opacity: 0.58;
+}
+
+.glass-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.glass-panel-soft {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.035) 42%, rgba(15, 23, 42, 0.2)),
+    rgba(15, 23, 42, 0.18);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.26),
+    inset 0 -18px 28px rgba(15, 23, 42, 0.16),
+    0 12px 32px rgba(2, 6, 23, 0.18);
+  backdrop-filter: blur(22px) saturate(1.16);
+}
+
+.glass-panel-header {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.035)),
+    rgba(15, 23, 42, 0.14);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
